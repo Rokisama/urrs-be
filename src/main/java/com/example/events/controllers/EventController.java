@@ -20,7 +20,10 @@ public class EventController {
     public List<EventDto> getEvents() {
         return eventService.getEvents();
     }
-
+    @PostMapping("/filter")
+    public List<EventDto> getEventsByFilter(@RequestBody EventRequestDto eventRequestDto) {
+        return eventService.getEventsByFilter(eventRequestDto);
+    }
     @PreAuthorize("hasRole('ORGANIZER')")
     @PostMapping
     public void createEvent(@RequestBody EventRequestDto eventRequestDto) {
